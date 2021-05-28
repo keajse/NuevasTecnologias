@@ -1,0 +1,11 @@
+{%extends 'layout.html'%}
+{%block body%}
+<h1 id="my-text" onclick="showAlert()">Paz y bien...</h1>
+
+{% for person in people%}
+<div class="alert alert-success" role="alert">
+    Paz y bien, Nombre: {{person["name"]}} - Edad: {{person["age"]}} 
+</div>
+{% endfor %}
+
+{%endblock%}

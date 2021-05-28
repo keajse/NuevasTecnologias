@@ -1,0 +1,51 @@
+{%extends 'layout.html'%}
+{%block body%}
+
+<br><br>
+
+<div class="row">
+
+    
+
+    <div class="col-sm-6">
+
+        <form id="login" method="POST" action="/login">
+            <br><br>
+            <div class="col-8">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input name="email" type="email" class="form-control" id="exampleInputEmail1"
+                    aria-describedby="emailHelp">
+                
+            </div>
+            <div class="col-8">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input name="password" type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="col-8 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+            <br><br>
+            <div class="col-8">
+                <label>Tipo de rol</label>
+                <select name="rol" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option selected>Open this select menu</option>
+                    <option value="admin">Anfitrión</option>
+                    <option value="invitado">Invitado</option>
+
+                </select>
+            </div>
+            <br><br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <br><br>
+        </form>       
+
+    </div>
+
+    <div class="col-md-4">
+        <img src="{{url_for('static',filename='img/paris.jpg')}}" class="card-img-top" alt="..." margin-top="100px">
+    </div>
+
+</div>
+
+{%endblock%}

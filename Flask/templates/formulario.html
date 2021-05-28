@@ -1,0 +1,105 @@
+{%extends 'layout.html'%}
+{%block body%}
+
+<div id="styleForm">
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-4">
+                <img src="{{url_for('static',filename='img/salto.jpg')}}" class="card-img-top" alt="..."
+                    margin-top="100px">
+            </div>
+
+            <div class="col-sm-6">
+
+                <form id="registro" class="row g-3 needs-validation" method="POST" Action="/formulario">
+                    <br><b></b>
+                    <div class="col-md-6">
+                        <label for="validationCustom01" class="form-label">First name</label>
+                        <input name="firstName" type="text" class="form-control" id="validationCustom01" value=""
+                            required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="validationCustom02" class="form-label">Last name</label>
+                        <input name="lastName" type="text" class="form-control" id="validationCustom02" value=""
+                            required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputEmail4" class="form-label">Email</label>
+                        <input name="email" type="email" class="form-control" id="inputEmail4">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputPassword5" class="form-label">Password</label>
+                        <input name="password" type="password" id="inputPassword5" class="form-control"
+                            aria-describedby="passwordHelpBlock">
+                        <div id="passwordHelpBlock" class="form-text">
+                            <!--Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces,
+                special characters, or emoji.-->
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="validationCustomUsername" class="form-label">Username</label>
+                        <div class="input-group has-validation">
+                            <span class="input-group-text" id="inputGroupPrepend">@</span>
+                            <input name="username" type="text" class="form-control" id="validationCustomUsername"
+                                aria-describedby="inputGroupPrepend" required>
+                            <div class="invalid-feedback">
+                                Please choose a username.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="country" class="form-label">Country</label>
+                        <input name="country" type="text" class="form-control" id="country">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="validationCustom03" class="form-label">City</label>
+                        <input name="city" type="text" class="form-control" id="validationCustom03" required>
+                        <div class="invalid-feedback">
+                            Please provide a valid city.
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-8">
+                        <label>Tipo de rol</label>
+                        <select name="rol" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                            <option selected>Open this select menu</option>
+                            <option value="admin">Anfitrión</option>
+                            <option value="invitado">Invitado</option>
+
+                        </select>
+                    </div>
+
+                    <div class="col-8">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                            <label class="form-check-label" for="invalidCheck">
+                                Agree to terms and conditions
+                            </label>
+                            <div class="invalid-feedback">
+                                You must agree before submitting.
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>
+                    <div class="col-12">
+                        <button class="btn btn-primary" type="submit" onclick="insertData()">Submit form</button>
+                    </div>
+                    <br><br><br>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{%endblock%}
