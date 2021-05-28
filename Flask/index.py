@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for,session
-from flask_pymongo import PyMongo
+from flask_pymongo import PyMongo, ObjectId
 import pymongo
 
 app = Flask(__name__)
@@ -56,10 +56,43 @@ def logout():
     session.clear()
     return redirect(url_for('index'))
 
+@app.route('/reservations', methods=['POST'])
+def createReservation():
+    if request.method == 'POST':
+    #print(request.json)
+        myReservation ={
+            'name': request.form['firstName'],
+            'lastname': request.form['lastName'],
+            'email': request.form['email'],
+            'password': request.form['password'],
+            'username': request.form['username'],
+            'country': request.form['country'],
+            'city': request.form['city'],
+            'role': request.form['rol']
 
+        }
+        
+        result = myCollection.insert_one(myReservation)
+        print(result)      
+        return redirect(url_for('products'))
+    else:
+        return "bad request"
+
+@app.route('/reservations', methods=['GET'])
+def getReservations():
+    return 'received'
+
+@app.route('/reservation/<id>', methods=['GET'])
+def getReservation():
+    return 'received'
+
+@app.route('/reservations/<id>', methods=['GET'])
+def deleteReservation():
+    return 'received'
+
+@app.route('/reservations/<id>', methods=['PUT'])
+def updateReservation():
+    return 'received'
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-
-
