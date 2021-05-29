@@ -74,25 +74,44 @@ def createReservation():
         
         result = myCollection.insert_one(myReservation)
         print(result)      
-        return redirect(url_for('products'))
+        return redirect(url_for('index'))
     else:
         return "bad request"
 
-@app.route('/reservations', methods=['GET'])
-def getReservations():
-    return 'received'
+@app.route('/readAllData', methods=['GET'])
+def readAllData():
+    result = myCollection.find() #SELECT * FROM table_name
+    for document in result:  
+        #print(document)  
+        print(document)      
+    #return jsonify(result)
 
-@app.route('/reservation/<id>', methods=['GET'])
-def getReservation():
-    return 'received'
+#readAllData()
 
-@app.route('/reservations/<id>', methods=['GET'])
-def deleteReservation():
-    return 'received'
+@app.route('/findById/<_id>', methods=['GET'])
+def findById():
+    query = {"_id": ObjectId("60af18403cb99910fe698593")}
+    result = myCollection.find_one(query)
+    print(result)
+    return (result)
 
-@app.route('/reservations/<id>', methods=['PUT'])
-def updateReservation():
-    return 'received'
+#findById()
+
+#findById@app.route('/update' , methods=['PUT'])
+def updateData():
+    query = {"_id": ObjectId("60b1701f92331894089be768")}
+    newValues = {"$set":{"name": "Maria Teresa", "lastname": "Gomez", "email": "mariaca@gmail.com", "password": "MiDiosymitodo", "username": "mariaca"}} #El set es obligatorio.
+    myCollection.update_one(query, newValues)
+    print("Registro actualizado")
+
+#updateData()
+
+def deleteData():
+    query = {"_id": ObjectId("60b1701f92331894089be768")}
+    myCollection.delete_one(query)
+    print("Registro borrado")
+
+deleteData()
 
 if __name__ == "__main__":
     app.run(debug=True)
